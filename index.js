@@ -1,17 +1,14 @@
 const Koa = require('koa')
-
 const app = new Koa()
+const router = require('./router')
 
 app.use(async(ctx, next) => {
     await next()
-    ctx.body = {
-        code:200,
-        data:{
-            text:'Hello Word!'
-        },
-        message:'success'
-    }
+    
 })
+
+app.use(router)
+
 
 app.listen(1314)
 console.log('程序已在1314端口运行')
